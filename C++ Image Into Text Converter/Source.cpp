@@ -4,7 +4,8 @@
 #include "SFML/Graphics.hpp"
 
 #define DIR_NAME "Files/"
-#define PRECISION 8 //8 pixels will be converted into single sign
+#define PRECISION_X 5
+#define PRECISION_Y 10
 
 using namespace std;
 
@@ -103,8 +104,8 @@ char ** convert_image_into_text(string input_file_name, int& number_of_horizonta
 	int map_vertical_size = map.getSize().y;
 	cout << "Image size: " << map_horizontal_size << "x" << map_vertical_size << endl;
 
-	number_of_horizontal_sings = map_horizontal_size/PRECISION;
-	number_of_vertical_sings = map.getSize().y/PRECISION;
+	number_of_horizontal_sings = map_horizontal_size/PRECISION_X;
+	number_of_vertical_sings = map.getSize().y/PRECISION_Y;
 	cout << "Number of horizontal signs: " << number_of_horizontal_sings << endl;
 	cout << "Number of vertical signs: " << number_of_vertical_sings << endl;
 
@@ -119,7 +120,7 @@ char ** convert_image_into_text(string input_file_name, int& number_of_horizonta
 	{
 		for (int j = 0; j < number_of_horizontal_sings; j++)
 		{
-			color = map.getPixel(j*PRECISION, i*PRECISION);
+			color = map.getPixel(j*PRECISION_X, i*PRECISION_Y);
 			array[i][j] = get_sign(color);
 		}
 	}
